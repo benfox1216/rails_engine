@@ -4,4 +4,4 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-Dir.glob(File.join('lib/tasks/**/*.rake')).each { |file| load file }
+Dir.glob(File.join('lib/seeds/*.rake')).each { |file| load file }
