@@ -3,12 +3,12 @@ require 'pry'
 
 desc 'Clear and seed the development database'
 task :seed => :environment do
-  Customer.delete_all
-  InvoiceItem.delete_all
-  Invoice.delete_all
-  Item.delete_all
-  Merchant.delete_all
   Transaction.delete_all
+  InvoiceItem.delete_all
+  Item.delete_all
+  Invoice.delete_all
+  Merchant.delete_all
+  Customer.delete_all
   
   ActiveRecord::Base.connection.tables.each do |t|
     ActiveRecord::Base.connection.reset_pk_sequence!(t)
@@ -57,7 +57,7 @@ task :seed => :environment do
     c = Item.new
     c.name = row['name']
     c.description = row['description']
-    c.unit_price = row['unit_price']
+    c.unit_price = (row['unit_price'].to_f)/100.round(2)
     c.merchant_id = row['merchant_id']
     c.created_at = row['created_at']
     c.updated_at = row['updated_at']
@@ -72,7 +72,7 @@ task :seed => :environment do
     c.item_id = row['item_id']
     c.invoice_id = row['invoice_id']
     c.quantity = row['quantity']
-    c.unit_price = row['unit_price']
+    c.unit_price = (row['unit_price'].to_f)/100.round(2)
     c.created_at = row['created_at']
     c.updated_at = row['updated_at']
     c.save
