@@ -4,7 +4,7 @@ class MerchantSerializer
   
   has_many :items
   
-  attribute :data do |object|
+  attribute :merchant_description do |object|
     {"id": "#{object.id}",
     "type": "#{object.class}",
     "attributes": {

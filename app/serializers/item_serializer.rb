@@ -1,10 +1,9 @@
 class ItemSerializer
   include FastJsonapi::ObjectSerializer
+  belongs_to :merchant
   attributes :id, :name, :description, :unit_price, :merchant_id
   
-  belongs_to :merchant
-  
-  attribute :data do |object|
+  attribute :item_description do |object|
     {"id": "#{object.id}",
     "type": "#{object.class}",
     "attributes": {
