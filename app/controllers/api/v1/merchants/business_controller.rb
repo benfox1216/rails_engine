@@ -4,6 +4,6 @@ class Api::V1::Merchants::BusinessController < ApplicationController
   end
   
   def index_most_items
-    render json: MerchantSerializer.new(Item.most_items(params[:quantity]))
+    render json: MerchantSerializer.new(Merchant.most_items(params[:quantity]))
   end
 end

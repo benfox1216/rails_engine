@@ -61,6 +61,9 @@ describe "Business Intelligence" do
   end
   
   it "returns merchants with most items sold" do
-    #get '/api/v1/merchants/most_items?quantity=2'
+    get '/api/v1/merchants/most_items?quantity=2'
+    
+    expect(response).to be_successful
+    expect(json[:data].count).to eq(2)
   end
 end
