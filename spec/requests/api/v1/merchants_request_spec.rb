@@ -51,7 +51,7 @@ describe "Merchants API" do
     get "/api/v1/merchants/find?name=#{name}"
 
     expect(response).to be_successful
-    expect(json).to eq({error: 'Error'})
+    expect(json).to eq({error: 'No results'})
   end
   
   xit "sends a single merchant in response to a date query" do

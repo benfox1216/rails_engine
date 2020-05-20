@@ -4,6 +4,10 @@ Rails.application.routes.draw do
       #Find Endpoints
       get '/merchants/find', to: 'merchants/search#show'
       
+      #Business Intelligence
+      get '/merchants/most_revenue', to: 'merchants/business#index_most_revenue'
+      get '/merchants/most_items', to: 'merchants/business#index_most_items'
+      
       #API Endpoints
       resources :items, only: [:index, :show]
       resources :merchants, only: [:index, :show]
