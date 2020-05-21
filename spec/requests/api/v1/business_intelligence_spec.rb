@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Business Intelligence" do
+describe "Business Intelligence API" do
   before :each do
     merchant_1 = create(:merchant)
     merchant_2 = create(:merchant)
@@ -65,5 +65,9 @@ describe "Business Intelligence" do
     
     expect(response).to be_successful
     expect(json[:data].count).to eq(2)
+  end
+  
+  xit "returns revenue across a date range" do
+    get '/api/v1/revenue?start=2012-03-09&end=2012-03-24'
   end
 end
